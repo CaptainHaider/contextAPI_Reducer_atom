@@ -1,24 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useState } from 'react';
+import BlogContext from './context/BlogContext';
 
-function App() {
+const App = () => {
+  const { data, addBlogPost } = useContext(BlogContext);
+  const [inputText, setInputText] = useState();
+   
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div >
+      <h1>{data.length}</h1>
+      <h2>{data.length ? data.map((val) => <div><p>{val.title}</p><br /></div>) : null}</h2>
+      <input
+        value={inputText}
+        onChange={(e) => setInputText(e.target.value)}
+      />
+      <button
+        style={{ width: '100px', height: '100px' }}
+        onClick={() => addBlogPost(inputText)} >
+         Hello
+         </button>
     </div>
   );
 }

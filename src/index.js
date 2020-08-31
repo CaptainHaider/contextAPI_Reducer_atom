@@ -3,10 +3,12 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-
+import {BlogProvider} from './context/BlogContext';
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <BlogProvider>
+      <App />
+    </BlogProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
